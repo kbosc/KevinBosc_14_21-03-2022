@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useSelector, useDispatch } from "react-redux"
 
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
@@ -37,24 +38,15 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(firstName, lastName, startDate, department, dateOfBirth, street, city) {
-  return { firstName, lastName, startDate, department, dateOfBirth, street, city };
-}
-
-const rows = [
-  createData('John', "Doe", "22/03/2021", "Sales", "03/07/1984", "111 8th Ave", "New York"),
-  createData('Patrick', "Chaun", "22/03/2021", "Sales", "03/07/1984", "111 8th Ave", "Las Vegas"),
-  createData('Delphine', "Doe", "22/03/2021", "Sales", "03/07/1984", "111 8th Ave", "Menphis"),
-  createData('Augustin', "Banjo", "22/03/2021", "Sales", "03/07/1984", "111 8th Ave", "Los Angeles"),
-  createData('Catherine', "Manson", "22/03/2021", "Sales", "03/07/1984", "111 8th Ave", "wisconsis"),
-];
-
 export default function EmployeeList() {
+  const [searchTerm, setSearchTerm] = useState('')
+  const userData = useSelector(state => state.employee)
+  console.log(userData.data);
   return (
     <Stack spacing={2}>
       <Stack spacing={2}>
           <Stack width="50%">
-            <TextField id="outlined-basic" label="Search Employee" variant="outlined" />
+            <TextField id="outlined-basic" label="Search Employee" variant="outlined" onChange={e => {setSearchTerm(e.target.value)}} />
           </Stack>
           <TableContainer component={Paper}>
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -70,11 +62,16 @@ export default function EmployeeList() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row) => (
-                <StyledTableRow key={row.firstName}>
-                  <StyledTableCell component="th" scope="row">
-                    {row.firstName}
-                  </StyledTableCell>
+              {userData.data.filter((value) => {
+                if (searchTerm === "") {
+                  return value
+                } else if (value.firstName.toLowerCase().includes(searchTerm.toLowerCase()) || value.lastName.toLowerCase().includes(searchTerm.toLowerCase())) {
+                  return value
+                }
+              }).map((row, index) => (
+                <StyledTableRow key={index}>
+                  {/* <StyledTableCell component="th" scope="row">{row.firstName}</StyledTableCell> */}
+                  <StyledTableCell>{row.firstName}</StyledTableCell>
                   <StyledTableCell>{row.lastName}</StyledTableCell>
                   <StyledTableCell>{row.startDate}</StyledTableCell>
                   <StyledTableCell>{row.department}</StyledTableCell>

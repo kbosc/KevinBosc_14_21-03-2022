@@ -1,5 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
-import Typography from '@mui/material/Typography';
+// import Typography from '@mui/material/Typography';
+import { Typography } from '@mui/material';
+// import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -7,13 +9,11 @@ import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
 import React from 'react'
 
-import CreateEmployee from '../pages/CreateEmployee';
+import CreateEmployee from '../components/CreateEmployee';
 import { ThemeDefault } from "../utils/style/theme"
-import EmployeeList from "../pages/EmployeeList"
-import * as Style from "./header.style"
-import logo from "../assets/logo.png"
-
-
+import EmployeeList from "../components/EmployeeList"
+import * as Style from "./Home.style"
+import logo from "../assets/logo.jpg"
 
 // const StyledTab = styled(Tab)(() => ({
 //   // backgroundColor: ThemeDefault.colors.tertiary,
@@ -83,7 +83,7 @@ export default function Header() {
               />
               <Tab
                 label="VIEW CURRENT EMPLOYEES" {...a11yProps(1)}
-                indicatorColor={ThemeDefault.colors.primary}
+                // indicatorColor={ThemeDefault.colors.primary}
                 textColor="black"
               />
             </Tabs>
@@ -103,6 +103,7 @@ function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
   return (
+    // <Typography component={'span'} variant={'body2'}>Company Status :</Typography>
     <div
       role="tabpanel"
       hidden={value !== index}
