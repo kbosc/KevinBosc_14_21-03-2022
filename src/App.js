@@ -4,12 +4,10 @@ import Container from '@mui/material/Container';
 import { Provider } from "react-redux"
 import React from "react"
 
-// import CreateEmployee from "./pages/CreateEmployee";
-// import EmployeeList from "./pages/EmployeeList";
 // import GlobalStyle from './utils/style/GlobalStyle'
 // import { ThemeDefault } from "./utils/style/theme"
-import Home from "./pages/Home";
 import Error from "./pages/Error";
+import Home from "./pages/Home";
 import { store } from "./redux"
 
 
@@ -20,11 +18,8 @@ function App() {
         <React.Fragment>
           {/* <GlobalStyle /> */}
           <Container>
-            {/* <Header /> */}
             <Routes>
               <Route path='/' element={<Home />} />
-              {/* <Route path='/' element={<CreateEmployee />} />
-              <Route path='/employeeList' element={<EmployeeList />}/> */}
               <Route path='/*' element={<Error />}/>
             </Routes>
           </Container>

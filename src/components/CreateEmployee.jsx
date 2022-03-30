@@ -9,31 +9,26 @@ import FormControl from '@mui/material/FormControl';
 import Typography from '@mui/material/Typography';
 import InputLabel from '@mui/material/InputLabel';
 import TextField from '@mui/material/TextField';
-import { styled } from '@mui/material/styles';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 
-import { addEmployee } from "../redux"
-import { ThemeDefault } from "../utils/style/theme"
-// import { Modal, useModal } from "modal-component-library"
 
-const StyledButtonLeft = styled(Button)(() => ({
-  backgroundColor: ThemeDefault.colors.tertiary,
-  "&:hover": {
-    backgroundColor: ThemeDefault.colors.primary,
-    color: ThemeDefault.colors.white,
-  },
-}));
-const StyledButtonRight = styled(Button)(() => ({
-  backgroundColor: ThemeDefault.colors.white,
-  color: ThemeDefault.colors.tertiary,
-  "&:hover": {
-    backgroundColor: ThemeDefault.colors.primary,
-    color: ThemeDefault.colors.white,
-  },
-}));
+import { employeeState, employeeDepartment } from "../api/index"
+// import { Modal, useModal } from "modal-component-library"
+import { addEmployee } from "../redux"
+import * as Style from "./createEmployee.style"
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+function titleCase(str) {
+  const splitStr = str.toLowerCase().split(' ');
+  for (let i = 0; i < splitStr.length; i++) {
+      splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+  }
+  return splitStr.join(' '); 
+}
 
 export default function CreateEmployee() {
   const [valueBirth, setValueBirth] = useState(new Date('2014-08-18T21:11:54'));
@@ -46,69 +41,25 @@ export default function CreateEmployee() {
   const [city, setCity] = useState('')
   const [zip, setZip] = useState('')
   const dispatch = useDispatch()
-//   const [employee, setEmployee] = useState({
-//     firstName: "",
-//     lastName: "",
-//     startDate: "",
-//     department: "",
-//     dateOfBirth: "",
-//     street: "",
-//     city: "",
-// });
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-function titleCase(str) {
-  const splitStr = str.toLowerCase().split(' ');
-  for (let i = 0; i < splitStr.length; i++) {
-      splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
-  }
-  return splitStr.join(' '); 
-}
-// const formattingStartDate = format(valueStart, 'MM/dd/yyyy')
-// const formattingBirthDate = format(valueBirth, 'MM/dd/yyyy')
-
-const newEmployee = {
-  firstName: capitalizeFirstLetter(firstName),
-  lastName: capitalizeFirstLetter(lastName),
-  startDate: "valueStart",
-  department: department,
-  dateOfBirth: "valueBirth",
-  street: street,
-  city: titleCase(city),
-};
-  
-  // const handleChangeBirth = (newValue) => {
-  //   setValueBirth(newValue);
-  // };
-  // const handleChangeStart = (newValue) => {
-  //   setValueStart(newValue);
-  // };
-  // const handleChangeState = (event) => {
-  //   setState(event.target.value);
-  // };
-  // const handleChangeDepartment = (event) => {
-  //   setDepartment(event.target.value);
-  // };
   // const { isShowing, isToggle } = useModal();
 
-  function handleSubmit(event) {
-    console.log("////////////////////identity/////////////")
-    console.log( 'firstname:', firstName); 
-    console.log( 'lastname:', lastName); 
-    console.log( 'date of birth:', valueBirth);
-    console.log("////////////////////adress////////////////")
-    console.log( 'state:', state); 
-    console.log( 'street:', street); 
-    console.log( 'city:', city); 
-    console.log( 'zip:', zip); 
-    console.log("////////////////////Company status/////////")
-    console.log("date start:", valueStart)
-    console.log( 'department:', department); 
-    console.log("////////////////////**************************/////////////////")
-    const dateajour = format(valueBirth, 'MM/dd/yyyy')
-    console.log(dateajour)
-}
+  // const formattingStartDate = format(valueStart, 'MM/dd/yyyy')
+  // const formattingBirthDate = format(valueBirth, 'MM/dd/yyyy')
+  const newEmployee = {
+    firstName: capitalizeFirstLetter(firstName),
+    lastName: capitalizeFirstLetter(lastName),
+    startDate: "valueStart",
+    department: department,
+    dateOfBirth: "valueBirth",
+    street: street,
+    city: titleCase(city),
+  };
+
+  // function resetField() {
+  //   console.log("coucou");
+  //   setFirstName = ""
+  // }
+
   return (
     <div>
       <Box
@@ -117,7 +68,6 @@ const newEmployee = {
         <Box
         spacing={10}
         component="form"
-        onSubmit={handleSubmit}
         sx={{
           '& > :not(style)': { m: 1 }, 
           width: '50%', 
@@ -128,13 +78,11 @@ const newEmployee = {
         autoComplete="off"
         >
           <Typography component={'span'} variant={'body2'}>Identity :</Typography>
-          {/* <h2>Identity :</h2> */}
           <TextField 
             id="outlined-basic" 
             label="First Name" 
             variant="outlined" 
             onChange={ e => setFirstName(e.target.value)}
-            // value={firstName}
             />
           <TextField 
             id="outlined-basic" 
@@ -148,7 +96,6 @@ const newEmployee = {
                 label="Date of Birth"
                 inputFormat="MM/dd/yyyy"
                 value={valueBirth}
-                // onChange={handleChangeBirth}
                 onChange={e => setValueBirth(e)}
                 renderInput={(params) => <TextField {...params} />}
               />
@@ -167,7 +114,6 @@ const newEmployee = {
         autoComplete="off"
         >
           <Typography component={'span'} variant={'body2'}>Address :</Typography>
-          {/* <h2>Address :</h2> */}
           <TextField 
             id="outlined-basic" 
             label="Street" 
@@ -187,12 +133,11 @@ const newEmployee = {
               id="demo-simple-select"
               value={state}
               label="State"
-              // onChange={handleChangeState}
               onChange={ e => setState(e.target.value)}
               >
-              <MenuItem value={"Vermont"}>Vermont</MenuItem>
-              <MenuItem value={"Virginia"}>Virginia</MenuItem>
-              <MenuItem value={"Wisconsin"}>Wisconsin</MenuItem>
+                {employeeState.map((state, index) => (
+                  <MenuItem key={index} value={state.state}>{state.state}</MenuItem>
+                ))}
             </Select>
           </FormControl>
           <TextField 
@@ -215,13 +160,11 @@ const newEmployee = {
         autoComplete="off"
         >
           <Typography component={'span'} variant={'body2'}>Company Status :</Typography>
-          {/* <h2>Company Status :</h2> */}
           <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DesktopDatePicker
                 label="Start Date"
                 inputFormat="MM/dd/yyyy"
                 value={valueStart}
-                // onChange={handleChangeStart}
                 onChange={e => setValueStart(e)}
                 renderInput={(params) => <TextField {...params} />}
               />
@@ -233,14 +176,11 @@ const newEmployee = {
               id="demo-simple-select"
               value={department}
               label="Department"
-              // onChange={handleChangeDepartment}
               onChange={ e => setDepartment(e.target.value)}
             >
-              <MenuItem value={"Sales"}>Sales</MenuItem>
-              <MenuItem value={"Marketing"}>Marketing</MenuItem>
-              <MenuItem value={"Engineering"}>Engineering</MenuItem>
-              <MenuItem value={"Human Resources"}>Human Resources</MenuItem>
-              <MenuItem value={"Legal"}>Legal</MenuItem>
+              {employeeDepartment.map((department, index) => (
+                  <MenuItem key={index} value={department.department}>{department.department}</MenuItem>
+                ))}
             </Select>
           </FormControl>
         </Box>
@@ -251,12 +191,21 @@ const newEmployee = {
         display: 'flex', 
         justifyContent: 'flex-end',
       }}>
-          <StyledButtonLeft variant="contained" type="submit" onClick={() => dispatch(addEmployee(newEmployee))} >Save</StyledButtonLeft>
-          {/* <StyledButtonLeft variant="contained" type="submit" onClick={handleSubmit} >Save</StyledButtonLeft> */}
-          {/* <StyledButtonLeft onClick={isToggle} variant="contained">Save</StyledButtonLeft> */}
-          <StyledButtonRight variant="contained">Reset</StyledButtonRight>
+          <Style.SButtonLeft variant="contained" type="submit" onClick={() => dispatch(addEmployee(newEmployee))} >Save</Style.SButtonLeft>
+          <Style.SButtonRight variant="contained" onClick={resetField}>Reset</Style.SButtonRight>
       </Box>
       {/* <Modal isShowing={isShowing} hide={isToggle} yourText="Employee Created!" /> */}
     </div>
   )
 }
+
+  // console.log(employeeState.map((state) => { console.log(state); }));
+//   const [employee, setEmployee] = useState({
+//     firstName: "",
+//     lastName: "",
+//     startDate: "",
+//     department: "",
+//     dateOfBirth: "",
+//     street: "",
+//     city: "",
+// });

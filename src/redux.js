@@ -1,57 +1,10 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
-// import api from "./api"
+import api from "./api"
 
 const employeeSlice = createSlice({
     name: "employee",
     initialState: {
-        data: 
-        [
-            {
-                firstName: "John",
-                lastName: "Doe",
-                startDate: "22/03/2021",
-                department: "Sales",
-                dateOfBirth: "03/07/1984",
-                street: "111 8th Ave",
-                city: "New York",
-            },
-            {
-                firstName: "Johnie",
-                lastName: "Doe",
-                startDate: "22/03/2021",
-                department: "Sales",
-                dateOfBirth: "03/07/1984",
-                street: "111 8th Ave",
-                city: "New York",
-            },
-            {
-                firstName: "Johna",
-                lastName: "Doe",
-                startDate: "22/03/2021",
-                department: "Sales",
-                dateOfBirth: "03/07/1984",
-                street: "111 8th Ave",
-                city: "New York",
-            },
-            {
-                firstName: "Johnu",
-                lastName: "Doe",
-                startDate: "22/03/2021",
-                department: "Sales",
-                dateOfBirth: "03/07/1984",
-                street: "111 8th Ave",
-                city: "New York",
-            },
-            {
-                firstName: "Johny",
-                lastName: "Doe",
-                startDate: "22/03/2021",
-                department: "Sales",
-                dateOfBirth: "03/07/1984",
-                street: "111 8th Ave",
-                city: "New York",
-            },
-        ],
+        data: api,
     },
     reducers: {
         addEmployee: (state, action) => {
@@ -68,3 +21,4 @@ export const store = configureStore({
         employee: employeeSlice.reducer
     },
 })
+
