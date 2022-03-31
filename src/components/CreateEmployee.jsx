@@ -1,3 +1,4 @@
+import { Modal, useModal } from "modal-component-library"
 import { useDispatch } from "react-redux"
 import React, { useState } from 'react';
 import { format } from 'date-fns'
@@ -15,9 +16,8 @@ import Box from '@mui/material/Box';
 
 
 import { employeeState, employeeDepartment } from "../api/index"
-// import { Modal, useModal } from "modal-component-library"
-import { addEmployee } from "../redux"
 import * as Style from "./createEmployee.style"
+import { addEmployee } from "../redux"
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -41,24 +41,44 @@ export default function CreateEmployee() {
   const [city, setCity] = useState('')
   const [zip, setZip] = useState('')
   const dispatch = useDispatch()
-  // const { isShowing, isToggle } = useModal();
+  const { isShowing, isToggle } = useModal();
+  //   const [employee, setEmployee] = useState({
+//     firstName: "",
+//     lastName: "",
+//     startDate: "",
+//     department: "",
+//     dateOfBirth: "",
+//     street: "",
+//     city: "",
+// });
 
-  // const formattingStartDate = format(valueStart, 'MM/dd/yyyy')
-  // const formattingBirthDate = format(valueBirth, 'MM/dd/yyyy')
-  const newEmployee = {
-    firstName: capitalizeFirstLetter(firstName),
-    lastName: capitalizeFirstLetter(lastName),
-    startDate: "valueStart",
-    department: department,
-    dateOfBirth: "valueBirth",
-    street: street,
-    city: titleCase(city),
-  };
+  function submit() {
+    const formattingStartDate = format(valueStart, 'MM/dd/yyyy')
+    const formattingBirthDate = format(valueBirth, 'MM/dd/yyyy')
+    const newEmployee = {
+      firstName: capitalizeFirstLetter(firstName),
+      lastName: capitalizeFirstLetter(lastName),
+      startDate: formattingStartDate,
+      department: department,
+      dateOfBirth: formattingBirthDate,
+      street: street,
+      city: titleCase(city),
+    };
+    dispatch(addEmployee(newEmployee))
+    isToggle()
+  }
 
-  // function resetField() {
-  //   console.log("coucou");
-  //   setFirstName = ""
-  // }
+  function resetField() {
+    setValueBirth(new Date('2014-08-18T21:11:54'))
+    setValueStart(new Date('2014-08-18T21:11:54'))
+    setDepartment("")
+    setFirstName("")
+    setLastName("")
+    setStreet("")
+    setState("")
+    setCity("")
+    setZip("")
+  }
 
   return (
     <div>
@@ -81,13 +101,16 @@ export default function CreateEmployee() {
           <TextField 
             id="outlined-basic" 
             label="First Name" 
-            variant="outlined" 
+            variant="outlined"
+            value={firstName}
             onChange={ e => setFirstName(e.target.value)}
+            // onChange={ e => setEmployee({firstname: e.target.value, ...employee})}
             />
           <TextField 
             id="outlined-basic" 
             label="Last Name" 
             variant="outlined"
+            value={lastName}
             onChange={ e => setLastName(e.target.value)}
 
           />
@@ -118,12 +141,14 @@ export default function CreateEmployee() {
             id="outlined-basic" 
             label="Street" 
             variant="outlined"
+            value={street}
             onChange={ e => setStreet(e.target.value)}
             /> 
           <TextField 
             id="outlined-basic" 
             label="City" 
             variant="outlined"
+            value={city}
             onChange={ e => setCity(e.target.value)}
             />
           <FormControl>
@@ -131,8 +156,8 @@ export default function CreateEmployee() {
             <Select
               labelId="state-label"
               id="demo-simple-select"
-              value={state}
               label="State"
+              value={state}
               onChange={ e => setState(e.target.value)}
               >
                 {employeeState.map((state, index) => (
@@ -144,6 +169,7 @@ export default function CreateEmployee() {
             id="outlined-basic" 
             label="Zip Code" 
             variant="outlined" 
+            value={zip}
             onChange={ e => setZip(e.target.value)}
           />
         </Box>
@@ -191,21 +217,10 @@ export default function CreateEmployee() {
         display: 'flex', 
         justifyContent: 'flex-end',
       }}>
-          <Style.SButtonLeft variant="contained" type="submit" onClick={() => dispatch(addEmployee(newEmployee))} >Save</Style.SButtonLeft>
+          <Style.SButtonLeft variant="contained" type="submit" onClick={submit} >Save</Style.SButtonLeft>
           <Style.SButtonRight variant="contained" onClick={resetField}>Reset</Style.SButtonRight>
       </Box>
-      {/* <Modal isShowing={isShowing} hide={isToggle} yourText="Employee Created!" /> */}
+      <Modal isShowing={isShowing} hide={isToggle} yourText="Employee Created!" />
     </div>
   )
 }
-
-  // console.log(employeeState.map((state) => { console.log(state); }));
-//   const [employee, setEmployee] = useState({
-//     firstName: "",
-//     lastName: "",
-//     startDate: "",
-//     department: "",
-//     dateOfBirth: "",
-//     street: "",
-//     city: "",
-// });

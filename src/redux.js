@@ -8,7 +8,6 @@ const employeeSlice = createSlice({
     },
     reducers: {
         addEmployee: (state, action) => {
-            console.log(action)
             state.data.push(action.payload)
         }
     }
