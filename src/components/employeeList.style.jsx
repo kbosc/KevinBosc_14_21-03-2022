@@ -9,11 +9,18 @@ export const STableCell = styled(TableCell)(({ theme }) => ({
       color: ThemeDefault.colors.tertiary,
       fontWeight: 'bold',
       textAlign: 'left',
+      "@media (max-width: 768px)": {
+        fontSize: 12,
+        whiteSpace: "nowrap",
+      },
+
     },
     [`&.${tableCellClasses.body}`]: {
-      // fontSize: 14,
-      // fontWeight: 'bold',
       textAlign: 'left',
+      "@media (max-width: 768px)": {
+        textAlign: 'center',
+        fontSize: 11,
+      },
     },
   }));
   

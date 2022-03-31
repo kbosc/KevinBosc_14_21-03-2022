@@ -31,8 +31,8 @@ function titleCase(str) {
 }
 
 export default function CreateEmployee() {
-  const [valueBirth, setValueBirth] = useState(new Date('2014-08-18T21:11:54'));
-  const [valueStart, setValueStart] = useState(new Date('2014-08-18T21:11:54'));
+  const [valueBirth, setValueBirth] = useState(new Date('1999-12-24T21:11:54'));
+  const [valueStart, setValueStart] = useState(new Date('2020-01-01T21:11:54'));
   const [department, setDepartment] = useState('');
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
@@ -42,15 +42,6 @@ export default function CreateEmployee() {
   const [zip, setZip] = useState('')
   const dispatch = useDispatch()
   const { isShowing, isToggle } = useModal();
-  //   const [employee, setEmployee] = useState({
-//     firstName: "",
-//     lastName: "",
-//     startDate: "",
-//     department: "",
-//     dateOfBirth: "",
-//     street: "",
-//     city: "",
-// });
 
   function submit() {
     const formattingStartDate = format(valueStart, 'MM/dd/yyyy')
@@ -69,8 +60,8 @@ export default function CreateEmployee() {
   }
 
   function resetField() {
-    setValueBirth(new Date('2014-08-18T21:11:54'))
-    setValueStart(new Date('2014-08-18T21:11:54'))
+    setValueBirth(new Date('1999-12-24T21:11:54'))
+    setValueStart(new Date('2020-01-01T21:11:54'))
     setDepartment("")
     setFirstName("")
     setLastName("")
@@ -98,13 +89,12 @@ export default function CreateEmployee() {
         autoComplete="off"
         >
           <Typography component={'span'} variant={'body2'}>Identity :</Typography>
-          <TextField 
+          <TextField
             id="outlined-basic" 
             label="First Name" 
             variant="outlined"
             value={firstName}
             onChange={ e => setFirstName(e.target.value)}
-            // onChange={ e => setEmployee({firstname: e.target.value, ...employee})}
             />
           <TextField 
             id="outlined-basic" 

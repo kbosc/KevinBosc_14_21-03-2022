@@ -1,6 +1,6 @@
 import { ThemeDefault } from "../utils/style/theme";
-import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
 
 export const SButtonLeft = styled(Button)(() => ({
     backgroundColor: ThemeDefault.colors.tertiary,
@@ -17,3 +17,4 @@ export const SButtonRight = styled(Button)(() => ({
       color: ThemeDefault.colors.white,
     },
   }));
+
