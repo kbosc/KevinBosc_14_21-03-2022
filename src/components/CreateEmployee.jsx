@@ -90,14 +90,14 @@ export default function CreateEmployee() {
         >
           <Typography component={'span'} variant={'body2'}>Identity :</Typography>
           <TextField
-            id="outlined-basic" 
+            // id="outlined-basic" 
             label="First Name" 
             variant="outlined"
             value={firstName}
             onChange={ e => setFirstName(e.target.value)}
             />
           <TextField 
-            id="outlined-basic" 
+            // id="outlined-basic" 
             label="Last Name" 
             variant="outlined"
             value={lastName}
@@ -128,14 +128,14 @@ export default function CreateEmployee() {
         >
           <Typography component={'span'} variant={'body2'}>Address :</Typography>
           <TextField 
-            id="outlined-basic" 
+            // id="outlined-basic" 
             label="Street" 
             variant="outlined"
             value={street}
             onChange={ e => setStreet(e.target.value)}
             /> 
           <TextField 
-            id="outlined-basic" 
+            // id="outlined-basic" 
             label="City" 
             variant="outlined"
             value={city}
@@ -156,7 +156,7 @@ export default function CreateEmployee() {
             </Select>
           </FormControl>
           <TextField 
-            id="outlined-basic" 
+            // id="outlined-basic" 
             label="Zip Code" 
             variant="outlined" 
             value={zip}
@@ -189,7 +189,7 @@ export default function CreateEmployee() {
             <InputLabel id="Department-label">Department</InputLabel>
             <Select
               labelId="Department-label"
-              id="demo-simple-select"
+              // id="demo-simple-select"
               value={department}
               label="Department"
               onChange={ e => setDepartment(e.target.value)}
