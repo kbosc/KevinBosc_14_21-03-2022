@@ -14,7 +14,6 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Box from '@mui/material/Box';
 
-
 import { employeeState, employeeDepartment } from "../api/index"
 import * as Style from "./createEmployee.style"
 import { addEmployee } from "../redux"
@@ -207,8 +206,8 @@ export default function CreateEmployee() {
         display: 'flex', 
         justifyContent: 'flex-end',
       }}>
-          <Style.SButtonLeft variant="contained" type="submit" onClick={submit} >Save</Style.SButtonLeft>
-          <Style.SButtonRight variant="contained" onClick={resetField}>Reset</Style.SButtonRight>
+        <Style.SButtonLeft variant="contained" type="submit" onClick={submit} >Save</Style.SButtonLeft>
+        <Style.SButtonRight variant="contained" onClick={resetField}>Reset</Style.SButtonRight>
       </Box>
       <Modal isShowing={isShowing} hide={isToggle} yourText="Employee Created!" />
     </div>

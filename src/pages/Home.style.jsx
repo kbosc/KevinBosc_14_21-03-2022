@@ -5,10 +5,8 @@ import Box from '@mui/material/Box';
 
 export const LogoHrnet = styled.img `
     width: 10em;
-    height:10em;
     @media (max-width: 768px) {
         width: 5em;
-        height:5em;
     }
 `
 export const TitleHeader = styled.h1 `

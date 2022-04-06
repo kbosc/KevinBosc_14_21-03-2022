@@ -10,11 +10,13 @@ import CreateEmployee from '../components/CreateEmployee';
 import EmployeeList from "../components/EmployeeList"
 import * as Style from "./Home.style"
 import logo from "../assets/logo.jpg"
+import { useMatchMedia } from "../utils/hooks/useMatchMedia";
 
 
 
 
 export default function Header() {
+  const isDesktopResolution = useMatchMedia("(min-width:750px)", true);
   const classes = Style.useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -45,15 +47,15 @@ export default function Header() {
             <CreateEmployee />
           </TabPanel>
           <TabPanel value={value} index={1}>
-          {window.matchMedia("(min-width: 600px)").matches ? (
-            /* La largeur minimum de l'affichage est 600 px inclus */
-            <EmployeeList />
-            ) : (
-            <Typography component={'span'}>
-              Afin d'avoir une expérience utilsateur optimisé, veuillez pivoter votre smartphone.
-            </Typography>
-            /* L'affichage est inférieur à 600px de large */
-          )}
+            {isDesktopResolution ? (
+              /* La largeur minimum de l'affichage est 600 px inclus */
+              <EmployeeList />
+              ) : (
+              /* L'affichage est inférieur à 600px de large */
+              <Typography component={'span'}>
+                Afin d'avoir une expérience utilsateur optimisé, veuillez pivoter votre smartphone.
+              </Typography>
+            )}
           </TabPanel>
         </Box>
     </Style.Header>
