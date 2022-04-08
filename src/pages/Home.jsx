@@ -89,6 +89,10 @@ TabPanel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
+
+/** 
+ * @param {number}
+ */
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,

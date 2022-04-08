@@ -1,5 +1,11 @@
 import { useState, useEffect } from "react";
 
+/**
+ * @param {string} mediaQuery
+ * @param {boolean} initialValue
+ * @return {boolean} 
+ */
+
 export const useMatchMedia = (mediaQuery, initialValue) => {
   const [isMatching, setIsMatching] = useState(initialValue);
   useEffect(() => {
