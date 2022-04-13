@@ -5,7 +5,6 @@ import configureStore from 'redux-mock-store';
 import { render, unmountComponentAtNode } from "react-dom";
 
 import  EmployeeList  from "../../components/EmployeeList"
-import { store } from "../../redux"
 import api from "../../api"
 
 const mockStore = configureStore([]);
@@ -37,7 +36,8 @@ it("test de la recherche", () => {
             </Provider>,
           container
         );
-      });
+    });
+    expect(container.textContent).toContain("First Name");
 })
 
 
