@@ -27,17 +27,17 @@ beforeEach(() => {
     
 
 
-it("test de la recherche", () => {
-    // expect(1).toBe(1)
-    act(() => {
-        render(
-            <Provider store={fakeStore}>
-                <EmployeeList/>
-            </Provider>,
-          container
-        );
-    });
-    expect(container.textContent).toContain("First Name");
+it("test page contain First Name ", () => {
+  // expect(1).toBe(1)
+  act(() => {
+      render(
+          <Provider store={fakeStore}>
+              <EmployeeList/>
+          </Provider>,
+        container
+      );
+  });
+  expect(container.textContent).toContain("First Name");
 })
 
 
