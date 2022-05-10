@@ -2,7 +2,7 @@
 
     Projet fictif de formation | OpenClassrooms
 
-<kbd>![Add an employee](./src/assets/hrNet.png.png)</kbd>
+![alt text](https://github.com/kbosc/KevinBosc_14_21-03-2022/blob/main/src/assets/hrNet.png?raw=true)
 
 > PROBLEMATIQUE
 
