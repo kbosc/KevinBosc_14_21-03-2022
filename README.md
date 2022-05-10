@@ -52,8 +52,8 @@ Utilisation en interne d'une application de gestion RH représentant 90% de la d
 
 ### Lancement du front-end
 
-- [ ] Cloner le repo : `git clone https://github.com/codexarama/WealthHealth.git`
-- [ ] Aller dans le dossier : `cd WealthHealth`
+- [ ] Cloner le repo : `git clone https://github.com/kbosc/KevinBosc_14_21-03-2022.git`
+- [ ] Aller dans le dossier : `cd KevinBosc_14_21-03-2022`
 - [ ] Installer ses dépendances : `npm install`
 - [ ] Lancer l'application : `npm start`
 
