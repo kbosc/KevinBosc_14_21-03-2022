@@ -1,32 +1,62 @@
-# HRnet
+# WealthHealth - HRnet
 
-## Description
+    Projet fictif de formation | OpenClassrooms
 
-This repository provide the project HRnet.
-The project n°14 of the OpenClassRooms Front End's course.
-it was asked to pass a JQuery project to React and to produce a library for a component (modal in this case).
+<kbd>![Add an employee](./src/assets/hrNet.png.png)</kbd>
 
-## Getting Started
+> PROBLEMATIQUE
 
-### Dependencies
+Utilisation en interne d'une application de gestion RH représentant 90% de la dette technologique de l'entreprise
 
-- IDE : I recommend VSCode
-- NPM or Yarn : I'm using NPM
+> BESOINS
 
-### Launch the project
+- Convertir l'application HRnet (code source 100% JQuery) en une application React
+- Convertir les plugins sources :
+  - sélecteur de date
+  - fenêtre modale
+  - menus déroulants
+  - tables de données
+- Comparer de performances entre l'ancienne et la nouvelle version
 
-- Fork the repository
-  Clone it on your computer.
-  The yarn or npm command will allow you to install the dependencies.
+## Compétences développées
 
-### `npm install`
-Install dependencies
+- [x] Refondre une application pour réduire la dette technique `JQUERY to REACT`
+- [x] Implémenter avec la programmation fonctionnelle `JAVASCRIPT`
+- [x] Créer un plugin et publier sa propre bibliothèque `REACT | NPM`
+- [x] Proposer un design graphique complet, harmonieux et cohérent avec l'identité de l'entreprise
+- [x] Déployer une application front-end `NPM`
+- [x] Analyser la performance d'une application web `LIGHTHOUSE`
 
-### `npm start`
-And run
+## Ressources fournies
 
-Wait until the magic happen on port 3000
+- [HRnet : code source](https://github.com/OpenClassrooms-Student-Center/P12_Front-end)
+- [Issues](https://github.com/OpenClassrooms-Student-Center/P12_Front-end/issues)
 
-## Help
+## Bibliothèques
 
-If you get any issues, please add issue to the repository.
+    REACT
+    MUI
+    perfectly-not-perfect-modal
+
+## Installation
+
+### Editeur recommandé
+
+- [Visual Studio code](https://code.visualstudio.com/)
+
+### Prérequis
+
+- [Git](https://git-scm.com/) pour cloner les repos
+- [nodeJS](https://nodejs.org/fr/) (version 17.3.0) pour exécuter les commandes
+- [npm](https://www.npmjs.com/) (version 8.3.0) pour lancer l'application
+
+### Lancement du front-end
+
+- [ ] Cloner le repo : `git clone https://github.com/codexarama/WealthHealth.git`
+- [ ] Aller dans le dossier : `cd WealthHealth`
+- [ ] Installer ses dépendances : `npm install`
+- [ ] Lancer l'application : `npm start`
+
+```bash
+URL de visualisation du rendu web : http://localhost:3000
+```
